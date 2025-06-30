@@ -1,0 +1,35 @@
+{
+  "name": "cashing-proxy",
+  "version": "1.0.0",
+  "description": "A fast TypeScript/Node.js caching proxy using Redis to store and serve HTTP responses, reducing latency and backend load.",
+  "main": "./dist/index.js",
+  "scripts": {
+    "dev": "npx nodemon"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/armanmartirosyan/caching-proxy.git"
+  },
+  "keywords": [
+    "caching-proxy",
+    "typescript",
+    "redis"
+  ],
+  "author": "Arman Martirosyan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/armanmartirosyan/caching-proxy/issues"
+  },
+  "homepage": "https://github.com/armanmartirosyan/caching-proxy#readme",
+  "devDependencies": {
+    "@types/express": "^5.0.3",
+    "@types/node": "^24.0.7",
+    "nodemon": "^3.1.10",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "express": "^5.1.0",
+    "redis": "^5.5.6"
+  }
+}
