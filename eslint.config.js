@@ -28,6 +28,7 @@ module.exports = defineConfig([
             "@typescript-eslint/consistent-type-imports": "error",
             "@typescript-eslint/no-floating-promises": "error",
             "@typescript-eslint/ban-ts-comment": "warn",
+            "@typescript-eslint/naming-convention": "error",
 
             "import/order": [
                 "error",
