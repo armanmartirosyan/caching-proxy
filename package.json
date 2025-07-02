@@ -6,7 +6,8 @@
   "scripts": {
     "start": "npx tsc && node ./dist/index.js",
     "dev": "npx nodemon",
-    "prepare": "husky"
+    "prepare": "husky",
+    "lint": "eslint \"src/**/*.{ts,tsx}\""
   },
   "repository": {
     "type": "git",
