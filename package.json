@@ -5,7 +5,8 @@
   "main": "./dist/index.js",
   "scripts": {
     "start": "npx tsc && node ./dist/index.js",
-    "dev": "npx nodemon"
+    "dev": "npx nodemon",
+    "prepare": "husky"
   },
   "repository": {
     "type": "git",
@@ -36,6 +37,7 @@
   },
   "dependencies": {
     "express": "^5.1.0",
+    "husky": "^9.1.7",
     "redis": "^5.5.6"
   }
 }
