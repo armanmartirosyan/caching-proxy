@@ -1,4 +1,4 @@
-import type { MethodMapType, ColorType } from "../types/logger.d";
+import type { MethodMapType, ColorType } from "../types/";
 
 class Logger {
 
@@ -15,7 +15,7 @@ class Logger {
     if (Logger._isInstantiated)
       throw new Error("Logger is a singleton. Use Logger.getInstance() instead of new Logger().");
     this.levels = ["debug", "info", "warn", "error"];
-    this.level = process.env.LOG_LEVEL || "info";
+    this.level = process.env.LOG_LEVEL || "debug";
     this.threshold = this.levels.indexOf(this.level);
     this.methodMap = {
       info: console.log,
