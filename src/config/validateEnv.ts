@@ -8,7 +8,7 @@ import type { ValidatedEnv } from "../types";
 export function validateEnv(): ValidatedEnv {
   const requiredEnv = {
     number: ["PORT"],
-    string: ["LOG_LEVEL", "NODE_ENV", "REDIS_URL"],
+    string: ["LOG_LEVEL", "NODE_ENV", "REDIS_URL", "REDIRECT_URL"],
   };
   const env: ValidatedEnv = {} as ValidatedEnv;
   const missingVars: string[] = [];
