@@ -1,4 +1,4 @@
-import logger from "./logger";
+import logger from "../helpers/logger";
 import type { ValidatedEnv } from "../types";
 
 function validateEnv(): ValidatedEnv {
