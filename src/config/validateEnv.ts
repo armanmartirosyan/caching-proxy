@@ -34,5 +34,3 @@ export function validateEnv(): ValidatedEnv {
 
   return env;
 }
-
-// export const env: ValidatedEnv =  validateEnv();
