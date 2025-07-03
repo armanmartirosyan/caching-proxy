@@ -1,7 +1,11 @@
+import path from "node:path";
+import dotenv from "dotenv";
+
+dotenv.config({ path: `${path.resolve(__dirname, "../../.env")}` });
 import logger from "../helpers/logger";
 import type { ValidatedEnv } from "../types";
 
-function validateEnv(): ValidatedEnv {
+export function validateEnv(): ValidatedEnv {
   const requiredEnv = {
     number: ["PORT"],
     string: ["LOG_LEVEL", "NODE_ENV", "REDIS_URL"],
@@ -31,4 +35,4 @@ function validateEnv(): ValidatedEnv {
   return env;
 }
 
-export const env: ValidatedEnv =  validateEnv();
+// export const env: ValidatedEnv =  validateEnv();
