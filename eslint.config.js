@@ -28,8 +28,35 @@ module.exports = defineConfig([
             "@typescript-eslint/consistent-type-imports": "error",
             "@typescript-eslint/no-floating-promises": "error",
             "@typescript-eslint/ban-ts-comment": "warn",
-            "@typescript-eslint/naming-convention": "error",
-
+            "@typescript-eslint/naming-convention": [
+                "error",
+                {
+                    selector: "default",
+                    format: ["camelCase"],
+                },
+                {
+                    selector: "typeLike",
+                    format: ["PascalCase"],
+                },
+                {
+                    selector: "enumMember",
+                    format: ["UPPER_CASE"],
+                },
+                {
+                    selector: "typeProperty",
+                    format: ["camelCase", "UPPER_CASE"],
+                },
+                {
+                    selector: "classProperty",
+                    format: ["camelCase", "UPPER_CASE"],
+                    leadingUnderscore: "allow",
+                },
+                {
+                    selector: "classMethod",
+                    format: ["camelCase"],
+                    leadingUnderscore: "allow",
+                }
+            ],
             "import/order": [
                 "error",
                 {
