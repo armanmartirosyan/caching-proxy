@@ -3,13 +3,13 @@ import { Redis, type RedisKey, type RedisValue } from "ioredis";
 import { configService } from "../../config";
 import { logger } from "../../common/logger";
 
-class RedisService {
+export class RedisService {
   private readonly _client: Redis;
 
-  private constructor() {
+  constructor() {
     this._client = new Redis(configService.env.REDIS_URL, {
       retryStrategy: (times: number): number | null => {
-        if (times > 3)
+        if (times > 2)
           return null;
         return Math.min(times * 1000, 2000);
       },
@@ -18,10 +18,6 @@ class RedisService {
     this._client.on("connect", () => logger.info("Redis connected."));
     this._client.on("close", () => logger.info("Redis disconnected."));
     this._client.on("error", (err: any) => logger.error("Redis Client Error:", err));
-  }
-
-  static create(): RedisService {
-    return new RedisService();
   }
 
   public disconnect(): void {
@@ -42,6 +38,3 @@ class RedisService {
     return this._client.del(key);
   }
 }
-
-const redis: RedisService = RedisService.create();
-export { redis };

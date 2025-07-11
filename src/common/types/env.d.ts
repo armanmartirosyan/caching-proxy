@@ -3,4 +3,5 @@ export type ValidatedEnv = {
   LOG_LEVEL: string;
   NODE_ENV: string;
   REDIS_URL: string;
+  REDIRECT_URL: string;
 }

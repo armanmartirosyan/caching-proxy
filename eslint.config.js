@@ -5,6 +5,7 @@ const importPlugin = require("eslint-plugin-import");
 
 module.exports = defineConfig([
     {
+        ignores: ["tmp.ts"],
         files: ["**/*.ts", "**/*.tsx"],
         languageOptions: {
             parser: tsParser,
