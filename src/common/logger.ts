@@ -1,9 +1,6 @@
-import type { MethodMapType, ColorType } from "../types/";
+import type { MethodMapType, ColorType } from "./types";
 
 class Logger {
-
-  private static _instance: Logger | null = null;
-  private static _isInstantiated: boolean = false;
 
   private levels: string[];
   private level: string;
@@ -11,9 +8,7 @@ class Logger {
   private methodMap: MethodMapType;
   private colors: ColorType;
 
-  private constructor() {
-    if (Logger._isInstantiated)
-      throw new Error("Logger is a singleton. Use Logger.getInstance() instead of new Logger().");
+  constructor() {
     this.levels = ["debug", "info", "warn", "error"];
     this.level = process.env.LOG_LEVEL || "debug";
     this.threshold = this.levels.indexOf(this.level);
@@ -30,15 +25,6 @@ class Logger {
       error: "\x1b[31m", // Red
       reset: "\x1b[0m",  // Reset to default
     };
-
-    Logger._isInstantiated = true;
-  }
-
-  public static get instance(): Logger {
-    if (!Logger._instance) {
-      Logger._instance = new Logger();
-    }
-    return Logger._instance;
   }
 
   private _log(type: string, ...args: any[]): void {
@@ -68,5 +54,5 @@ class Logger {
   }
 }
 
-const logger = Logger.instance;
-export default logger;
+const logger = new Logger();
+export { logger };

@@ -6,8 +6,9 @@
   "scripts": {
     "start": "npx tsc && node ./dist/index.js",
     "dev": "npx nodemon",
-    "prepare": "husky",
-    "lint": "eslint \"src/**/*.{ts,tsx}\""
+    "prepare": "npx husky",
+    "lint": "npx eslint \"src/**/*.{ts,tsx}\"",
+    "lint:fix": "npx eslint --fix ."
   },
   "repository": {
     "type": "git",
@@ -25,7 +26,6 @@
   },
   "homepage": "https://github.com/armanmartirosyan/caching-proxy#readme",
   "devDependencies": {
-    "@types/express": "^5.0.3",
     "@types/node": "^24.0.10",
     "@typescript-eslint/eslint-plugin": "^8.35.1",
     "@typescript-eslint/parser": "^8.35.1",
@@ -38,7 +38,6 @@
   },
   "dependencies": {
     "dotenv": "^17.0.1",
-    "express": "^5.1.0",
     "husky": "^9.1.7",
     "redis": "^5.5.6"
   }

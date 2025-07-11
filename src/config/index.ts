@@ -1,9 +1,5 @@
-import type { ValidatedEnv } from "../types";
-import { validateEnv } from "./validateEnv";
-
-const env: ValidatedEnv = validateEnv();
+import { configService } from "./config.service";
 
 export {
-  env,
-  validateEnv,
+  configService,
 };
