@@ -22,6 +22,7 @@ export class RedisService {
 
   public disconnect(): void {
     this._client.disconnect();
+    logger.info("Redis disconnected.");
   }
 
   public async set(key: RedisKey, value: RedisValue, expiryInSeconds?: number): Promise<"OK"> {

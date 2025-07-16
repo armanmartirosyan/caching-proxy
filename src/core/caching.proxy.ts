@@ -1,14 +1,16 @@
 import type { NextFunction, Express, Request, Response } from "express";
 import type { AxiosResponse } from "axios";
+import type { Server } from "node:http";
+import https from "node:https";
 import express from "express";
 import axios from "axios";
-import https from "node:https";
 
 import { RedisService } from "./redis/redis.service";
 import { logger } from "../common/logger";
 
 export class CachingProxyServer {
   private _app: Express;
+  private _server: Server | null;
   private _redirectUrl: string;
   private _redis: RedisService;
   private _port: number;
@@ -18,6 +20,7 @@ export class CachingProxyServer {
     this._port = port;
     this._redis = new RedisService();
     this._redirectUrl = redirectUrl;
+    this._server = null;
   }
 
   public startup(): void {
@@ -28,7 +31,7 @@ export class CachingProxyServer {
     this._app.use(this._proxyAllOtherMethods.bind(this));
 
 
-    this._app.listen(this._port, (): void => {
+    this._server = this._app.listen(this._port, (): void => {
       logger.info(`Caching server is running on port ${this._port}`);
     });
   }
@@ -105,6 +108,7 @@ export class CachingProxyServer {
     } catch (err) {
       logger.error("Error proxying non-GET request", err);
       res.status(500).send("Failed to proxy request");
+      return;
     }
   }
 
@@ -113,4 +117,12 @@ export class CachingProxyServer {
     logger.info(req.method.toUpperCase(), `${this._redirectUrl}${req.url}`);
     next();
   }
+
+  public shutdown(): void {
+    this._redis.disconnect();
+    if (this._server)
+      this._server.close();
+    logger.info("Caching server shut down.");
+  }
+
 }
