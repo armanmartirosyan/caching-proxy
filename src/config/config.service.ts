@@ -18,7 +18,7 @@ class ConfigService {
   private validateEnv(): ValidatedEnv {
     const requiredEnv = {
       number: ["PORT"],
-      string: ["LOG_LEVEL", "NODE_ENV", "REDIS_URL", "REDIRECT_URL"],
+      string: ["LOG_LEVEL", "REDIS_URL", "REDIRECT_URL"],
     };
     const env: ValidatedEnv = {} as ValidatedEnv;
     const missingVars: string[] = [];
